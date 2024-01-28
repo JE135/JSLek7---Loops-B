@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Datanoms Table</title>
+  <style>
+    table {
+      font-family: Arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    th, td {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Datanoms Table</h2>
+
+  <table id="datanomsTable">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Occupation</th>
+        <th>Age</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+
+  <p>Total Age: <span id="totalAge"></span></p>
+
+  <script>
+    // Your datanoms array
+    let datanoms = [
+      { name: 'foo', occupation: 'teacher', age: 42 }, 
+      { name: 'Alex', occupation: 'teacher', age: 44 },
+      { name: 'Tom', occupation: 'teacher', age: 44 },
+      { name: 'Andreas', occupation: 'student', age: 33 },
+      { name: 'Kevin', occupation: 'student', age: 17 },
+      { name: 'Linus', occupation: 'student', age: 17},
+      { name: 'Mikael', occupation: 'student', age: 17 },
+      { name: 'Eddie', occupation: 'student', age: 19 },
+      { name: 'Kristoffer', occupation: 'student', age: 17 },
+      { name: 'Rasmus', occupation: 'student', age: 18 },
+      { name: 'Max', occupation: 'student', age: 17 },
+      { name: 'Isak', occupation: 'student', age: 17 }
+    ];
+
+    // Get the table body
+    let tableBody = document.getElementById('datanomsTable').getElementsByTagName('tbody')[0];
+
+    // Loop through datanoms and populate the table
+    for (let i = 0; i < datanoms.length; i++) {
+      let row = tableBody.insertRow(i);
+      let cell1 = row.insertCell(0);
+      let cell2 = row.insertCell(1);
+      let cell3 = row.insertCell(2);
+
+      cell1.innerHTML = datanoms[i].name;
+      cell2.innerHTML = datanoms[i].occupation;
+      cell3.innerHTML = datanoms[i].age;
+    }
+
+    // Räknar ut s.k "total age"
+    let totalAge = datanoms.reduce((sum, datanom) => sum + datanom.age, 0);
+    document.getElementById('totalAge').innerText = totalAge;
+  </script>
+
+</body>
+</html>
